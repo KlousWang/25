@@ -146,7 +146,7 @@ int main() {
 				if (Value(&arr, &b, i, m, n) == ERROR) {
 					cout << "取值操作失败！" << endl;
 					Distionary(&arr);
-					return 1;
+					return 1;2
 				}
 				cout << "数组" << b << "的值为[" << i << "," << m << "," << n << "]" << endl;
 			}
