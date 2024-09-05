@@ -36,6 +36,9 @@ public:
 
 	//在链表头部插入节点
 	void insertHead(int value);
+
+	//在链表尾部插入节点
+	void inserttail(int value);
 };
 
 int DoublyLinkedList::getLength() const
@@ -64,11 +67,24 @@ void DoublyLinkedList::clear()
 void DoublyLinkedList::insertHead(int value)
 {
 	DoublyLinkedNode* newNode = new DoublyLinkedNode(value);
-	if (isEmpty) {
+	if (isEmpty()) {
 		head = tail = newNode;
 	}
 	newNode = head;
 	head->prev = newNode;
 	head = newNode;
+	length++;
+}
+
+void DoublyLinkedList::inserttail(int value)
+{
+	DoublyLinkedNode* newNode = new DoublyLinkedNode(value);
+	if (isEmpty()) {
+		head = tail = newNode;
+
+	}
+	newNode->prev = tail;
+	tail->next = newNode;
+	tail = newNode;
 	length++;
 }
