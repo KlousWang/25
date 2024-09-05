@@ -17,7 +17,7 @@ public:
 	//输出节点内容
 	void print()const;
 	//复制广义表
-	shared_ptr<GLNode>copy()const;
+	shared_ptr<GLNode>copy()const;  //shared_Ptr 自动管理动态分配的对象
 private:
 	NodeType tag;//节点类型
 	char atom;//原子值(如果是原子节点)
@@ -26,7 +26,7 @@ private:
 };
 
 
-void GLNode::print() const
+void GLNode::print() const  //添加const的作用是：函数承诺不修改对象的任何成员变量
 {
 	if (tag == ATOM) {
 		cout << atom;
@@ -49,10 +49,11 @@ void GLNode::print() const
 shared_ptr<GLNode> GLNode::copy() const
 {
 	if (tag == ATOM) {
-		return make_shared<GLNode>(atom);
+		return make_shared<GLNode>(atom);//make_shared 是 C++11 引入的一个用于创建 shared_ptr 的标准库函数。
+		                                 //它提供了一种高效、安全的方式来分配内存并创建一个 shared_ptr，用于管理该内存
 	}
 	vector < shared_ptr<GLNode>>copiedElements;
-	for (const auto& elem : elements) {
+	for (const auto& elem : elements) { //elem是对elements的引用
 		copiedElements.push_back(elem->copy());
 	}
 	return make_shared<GLNode>(copiedElements);
