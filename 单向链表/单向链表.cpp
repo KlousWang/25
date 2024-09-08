@@ -13,7 +13,6 @@ public:
 	LinkListNode* next;//
 	//构造函数，给了一个值value 并且给data以及next赋值；:data(value),next(nullptr)是初始化列表
 	LinkListNode(int value) :data(value), next(nullptr) {}
-
 };
 
 //链表操作
@@ -22,7 +21,7 @@ private:
 	LinkListNode* head;
 	int length;
 public:
-	//构造函数，初始化列表
+	//构造函数，初始化列表3
 	LinkList() :head(nullptr), length(0) {}
 
 	~LinkList() {
@@ -147,3 +146,5 @@ int main() {
 
 	return 0;
 }
+
+//ww
