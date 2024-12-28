@@ -4,7 +4,7 @@ using namespace std;
 template<typename T,size_t MAX_SIZE>
 class circularQueue {
 private:
-	T data[MAX_SIZE];//存储元素的数组
+	T data[MAX_SIZE];//??????????
 	size_t front;
 	size_t rear;
 	size_t size;
@@ -60,18 +60,18 @@ T circularQueue<T, MAX_SIZE>::peekrear() const
 int main() {
 	circularQueue<int, 5> queue;
 
-	// 入队操作
+	// ??????
 	queue.enqueue(1);
 	queue.enqueue(2);
 	queue.enqueue(3);
 
 	std::cout << "Front element: " << queue.peekrear() << std::endl;
 
-	// 出队操作
+	// ???????
 	std::cout << "Dequeued: " << queue.dequeue() << std::endl;
 	std::cout << "Dequeued: " << queue.dequeue() << std::endl;
 
-	// 再次入队操作
+	// ?????????
 	queue.enqueue(4);
 	queue.enqueue(5);
 

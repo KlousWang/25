@@ -21,17 +21,17 @@ void Distionary(Arrary* pArr);
 int Locate(Arrary* pArr, int nDim, va_list ap);
 int Assign(Arrary* pArr, ElemType* elem, ...);
 int Value(Arrary* pArr, ElemType* elem, ...);
-//³õÊ¼»¯Êý×é
-//arrÖ¸Ïò´ý³õÊ¼»¯µÄÊý¾Ý
-//nDim Êý×éµÄÎ¬¶È
-//...Êý×é¸÷Î¬¶ÈµÄ³¤¶È
+//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//arrÖ¸ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//nDim ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½
+//...ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ÈµÄ³ï¿½ï¿½ï¿½
 int InitArrary(Arrary* pArr, int nDim, ...)
 {
 	if (nDim < 1 || nDim>8)return ERROR;
 
-	//³õÊ¼»¯ pArrÊý×é¸÷ÊôÐÔ
+	//ï¿½ï¿½Ê¼ï¿½ï¿½ pArrï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	pArr->dim = nDim;
-	 //¹¹Ôìº¯ÊýÎ¬½ç»ùÖ·
+	 //ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½Î¬ï¿½ï¿½ï¿½Ö·
 	pArr->bounds = new int[nDim];
 	if (!pArr->bounds)return ERROR;
 
@@ -39,7 +39,7 @@ int InitArrary(Arrary* pArr, int nDim, ...)
 	va_list ap;
 	va_start(ap, nDim);
 
-	/// i =nDim -1 ,Ê¹ÁÐÓÅÏÈ
+	/// i =nDim -1 ,Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	for (i = nDim - 1; i >= 0; --i) {
 		pArr->bounds[i] = va_arg(ap, int);
 		if (pArr->bounds[i] <= 0) {
@@ -61,7 +61,7 @@ int InitArrary(Arrary* pArr, int nDim, ...)
 		return ERROR;
 	}
 
-	//µÝÍÆÇó³£Á¿µØÖ·£¬ÁÐÏÈ³ö
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½È³ï¿½
 	pArr->constants[nDim - 1] = 1;
 	for (i = nDim - 2; i >= 0; --i) {
 		pArr->constants[i] = pArr->bounds[i + 1] * pArr->constants[i + 1];
@@ -77,7 +77,7 @@ void Distionary(Arrary* pArr)
 }
 
 
-//¶¨Î»Êý×éÏÂ±êÖ¸ÏòµÄÔªËØÔÚÊý×éÖÐµÄÎ»ÖÃ
+//ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½Ö¸ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Î»ï¿½ï¿½
 int Locate(Arrary* pArr, int nDim, va_list ap)
 {
 	int nPos = 0, ind = 0;
@@ -117,20 +117,20 @@ int Value(Arrary* pArr, ElemType* elem, ...)
 
 int main() {
 	Arrary arr;
-	// ´´½¨Ò»¸öÈýÎ¬Êý×é£¬´óÐ¡Îª2x3x5
+	// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½é£¬ï¿½ï¿½Ð¡Îª2x3x5
 	if (InitArrary(&arr, 3, 2, 3, 5) == ERROR) {
-		cout << "³õÊ¼»¯Êý×éÊ§°Ü£¡" << endl;
+		cout << "ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½" << endl;
 		return 1;
 	}
 
 	int a = 0;
-	// ¸³Öµ²Ù×÷
+	// ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
 	for (int i = 0; i < 2; ++i) {
 		for (int m = 0; m < 3; ++m) {
 			for (int n = 0; n < 5; ++n) {
 				a = i + m + n;
 				if (Assign(&arr, &a, i, m, n) == ERROR) {
-					cout << "¸³Öµ²Ù×÷Ê§°Ü£¡" << endl;
+					cout << "ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½" << endl;
 					Distionary(&arr);
 					return 1;
 				}
@@ -139,16 +139,16 @@ int main() {
 	}
 
 	int b = 0;
-	// È¡Öµ²Ù×÷
+	// È¡Öµï¿½ï¿½ï¿½ï¿½
 	for (int i = 0; i < 2; ++i) {
 		for (int m = 0; m < 3; ++m) {
 			for (int n = 0; n < 5; ++n) {
 				if (Value(&arr, &b, i, m, n) == ERROR) {
-					cout << "È¡Öµ²Ù×÷Ê§°Ü£¡" << endl;
+					cout << "È¡Öµï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½" << endl;
 					Distionary(&arr);
-					return 1;2
+					return 1;
 				}
-				cout << "Êý×é" << b << "µÄÖµÎª[" << i << "," << m << "," << n << "]" << endl;
+				cout << "ï¿½ï¿½ï¿½ï¿½" << b << "ï¿½ï¿½ÖµÎª[" << i << "," << m << "," << n << "]" << endl;
 			}
 		}
 	}
